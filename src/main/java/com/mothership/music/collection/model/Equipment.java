@@ -20,7 +20,9 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
+    String manufacturer;
     Double price;
+    Double weight;
 
     public Equipment(String name, Double price) {
         this.name = name;
