@@ -19,13 +19,19 @@ public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
-    String name;
-    String manufacturer;
-    Double price;
+
+	String name;
+
+	String manufacturer;
+
+	Double price;
+
     Double weight;
 
-    public Equipment(String name, Double price) {
-        this.name = name;
-        this.price = price;
-    }
+	public Equipment(String name, String manufacturer, Double price, Double weight) {
+		this.name = name;
+		this.manufacturer = manufacturer;
+		this.price = price;
+		this.weight = weight;
+	}
 }

@@ -1,12 +1,12 @@
 package com.mothership.music.collection.controller;
 
 import com.mothership.music.collection.model.Equipment;
-import com.mothership.music.collection.repository.EquipmentRepository;
 import com.mothership.music.collection.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class EquipmentController {
@@ -15,9 +15,17 @@ public class EquipmentController {
     EquipmentService equipmentService;
 
     @GetMapping("/equipment")
-    public List<Equipment> showTableData(){
-
-        return this.equipmentService.showAllEquipment();
+    public List<Equipment> getAllEquipment(@RequestParam Map<String,String> allParams)
+	{
+		try
+		{
+//			return allParams;
+        	return this.equipmentService.getAll(allParams);
+		}
+		catch (Exception e)
+		{
+			throw e;
+		}
     }
 
     @GetMapping("/equipment/{id}")
@@ -30,14 +38,16 @@ public class EquipmentController {
     }
 
     @PostMapping("/equipment")
-    public void addEquipmentData(){
-        this.equipmentService.addRandomEquipment();
+    public void addEquipmentData() {
+        this.equipmentService.seedEquipment();
     }
 
     @DeleteMapping("/equipment")
-    public void deleteEquipData() { this.equipmentService.deleteEquipment(); }
+    public void deleteEquipData()
+	{
+		this.equipmentService.deleteAll();
+	}
 
-//    @ResponseBody
     @DeleteMapping("/equipment/{id}")
     public void deleteByID(@PathVariable("id") int id) { this.equipmentService.deleteByID(id); }
 }
