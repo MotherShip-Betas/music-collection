@@ -5,11 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +25,8 @@ public class Album {
 //    File artwork;
     String artwork_file_name;
     // Spring gets mad at the List
-//    List<Song> track_list;
+    @OneToMany
+    List<Song> track_list = new ArrayList<>();
     Integer track_count;
     Double run_time;
 

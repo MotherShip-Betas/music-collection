@@ -28,7 +28,7 @@ public class Song {
     String music_key;
     String filename;
     //    LocalDateTime date_added_to_db;
-    @Column(columnDefinition = "varchar(max)")
+    @Column(columnDefinition = "TEXT")
     String lyrics;
     Boolean is_instrumental;
 
